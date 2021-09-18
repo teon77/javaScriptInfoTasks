@@ -108,3 +108,149 @@ Hide ----- self
 
 Move the ball across the field
 -->
+
+
+<!--
+Toggling the menu
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .menu ul {
+        margin: 0;
+        list-style: none;
+        padding-left: 20px;
+        display: none;
+      }
+
+      .menu .title {
+        font-size: 18px;
+        cursor: pointer;
+      }
+
+      .menu .title::before {
+        content: "▶ ";
+        font-size: 80%;
+        color: green;
+      }
+
+      .menu.open .title::before {
+        content: "▼ ";
+      }
+
+      .menu.open ul {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="sweeties" class="menu">
+      <span class="title">Sweeties (click me)!</span>
+      <ul>
+        <li>Cake</li>
+        <li>Donut</li>
+        <li>Honey</li>
+      </ul>
+    </div>
+
+    <script>
+      let menuElem = document.getElementById("sweeties");
+      let titleElem = menuElem.querySelector(".title");
+
+      titleElem.onclick = function () {
+        menuElem.classList.toggle("open");
+      };
+    </script>
+  </body>
+</html>
+-->
+
+
+<!--
+closing the messages
+
+<script>
+    let panes = document.querySelectorAll('.pane');
+
+    for(let pane of panes) {
+      pane.insertAdjacentHTML("afterbegin", '<button class="remove-button">[x]</button>');
+      // button becomes the first child of pane
+      pane.firstChild.onclick = () => pane.remove();
+    }
+  </script>
+  -->
+  carousel
+  <!--
+  <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="carousel" class="carousel">
+      <button class="arrow prev">⇦</button>
+      <div class="gallery">
+        <ul class="images">
+          <li><img src="https://en.js.cx/carousel/1.png" /></li>
+          <li><img src="https://en.js.cx/carousel/2.png" /></li>
+          <li><img src="https://en.js.cx/carousel/3.png" /></li>
+          <li><img src="https://en.js.cx/carousel/4.png" /></li>
+          <li><img src="https://en.js.cx/carousel/5.png" /></li>
+          <li><img src="https://en.js.cx/carousel/6.png" /></li>
+          <li><img src="https://en.js.cx/carousel/7.png" /></li>
+          <li><img src="https://en.js.cx/carousel/8.png" /></li>
+          <li><img src="https://en.js.cx/carousel/9.png" /></li>
+          <li><img src="https://en.js.cx/carousel/10.png" /></li>
+        </ul>
+      </div>
+      <button class="arrow next">⇨</button>
+    </div>
+
+    <script>
+      /* label the images, just for convenience, to visually track them */
+      let i = 1;
+      for (let li of carousel.querySelectorAll("li")) {
+        li.style.position = "relative";
+        li.insertAdjacentHTML(
+          "beforeend",
+          `<span style="position:absolute;left:0;top:0">${i}</span>`
+        );
+        i++;
+      }
+
+      /* configuration */
+      let width = 130; // image width
+      let count = 3; // visible images count
+
+      let list = carousel.querySelector("ul");
+      let listElems = carousel.querySelectorAll("li");
+
+      let position = 0; // ribbon scroll position
+
+      carousel.querySelector(".prev").onclick = function () {
+        // shift left
+        position += width * count;
+        // can't move to the left too much, end of images
+        position = Math.min(position, 0);
+        list.style.marginLeft = position + "px";
+      };
+
+      carousel.querySelector(".next").onclick = function () {
+        // shift right
+        position -= width * count;
+        // can only shift the ribbbon for (total ribbon length - visible count) images
+        position = Math.max(position, -width * (listElems.length - count));
+        list.style.marginLeft = position + "px";
+      };
+    </script>
+  </body>
+</html>
+
+-->
